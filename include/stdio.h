@@ -187,8 +187,12 @@ int vasprintf(char **, const char *, __isoc_va_list);
 #endif
 
 #ifdef _GNU_SOURCE
+#define RENAME_NOREPLACE (1 << 0)
+#define RENAME_EXCHANGE  (1 << 1)
+#define RENAME_WHITEOUT  (1 << 2)
 char *fgets_unlocked(char *, int, FILE *);
 int fputs_unlocked(const char *, FILE *);
+int renameat2(int, const char *, int, const char *, unsigned int);
 
 typedef ssize_t (cookie_read_function_t)(void *, char *, size_t);
 typedef ssize_t (cookie_write_function_t)(void *, const char *, size_t);
